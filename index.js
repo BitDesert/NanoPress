@@ -76,7 +76,7 @@ function getIpfsFile(hash) {
 
     console.log(data.toString())
 
-    $('#posts').append('<div class="col-md-4"><div class="card mb-4 box-shadow"><div class="card-body"><p class="card-text">'+data.toString()+'</p></div></div></div>');
+    $('#posts').append('<div class="col-md-12"><div class="card mb-4 box-shadow"><div class="card-body"><p class="card-text">'+data.toString()+'</p></div></div></div>');
   })
 }
 
