@@ -1,18 +1,23 @@
 const node = new Ipfs({
   repo: 'ipfs-' + Math.random()
 })
+
 node.once('ready', () => {
   console.log('Online status: ', node.isOnline() ? 'online' : 'offline')
   document.getElementById("status").innerHTML = (node.isOnline() ? 'online' : 'offline')
-
-  init('xrb_1zc5jynj7rjyd9cakrfdr74jfy47oirts7ikr6538rwmb37ipmxkphu4c116');
 })
 
 node.on('error', error => {
   console.error('IPFS ERROR', error.message)
 })
 
-function init(account) {
+function search(account) {
+  var searchaddress = document.getElementById('searchaddress').value
+
+  searchaccount(searchaddress);
+}
+
+function searchaccount(account) {
 
   $.ajax({
       url: "https://nanovault.io/api/node-api",
