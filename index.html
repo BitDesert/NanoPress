@@ -11,59 +11,15 @@
 
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
     crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/trumbowyg@2.10.0/dist/ui/trumbowyg.min.css">
+    <link rel="stylesheet" href="static/css/index.css">
 </head>
 
 <body>
 
-  <style>
-    :root {
-      --jumbotron-padding-y: 3rem;
-    }
-
-    .jumbotron {
-      padding-top: var(--jumbotron-padding-y);
-      padding-bottom: var(--jumbotron-padding-y);
-      margin-bottom: 0;
-      background-color: #fff;
-    }
-
-    @media (min-width: 768px) {
-      .jumbotron {
-        padding-top: calc(var(--jumbotron-padding-y) * 2);
-        padding-bottom: calc(var(--jumbotron-padding-y) * 2);
-      }
-    }
-
-    .jumbotron p:last-child {
-      margin-bottom: 0;
-    }
-
-    .jumbotron-heading {
-      font-weight: 300;
-    }
-
-    .jumbotron .container {
-      max-width: 40rem;
-    }
-
-    footer {
-      padding-top: 3rem;
-      padding-bottom: 3rem;
-    }
-
-    footer p {
-      margin-bottom: .25rem;
-    }
-
-    .box-shadow {
-      box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
-    }
-  </style>
-
   <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
     <a class="navbar-brand" href="#">
       NanoPress
-      <small id="status">offline</small>
     </a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault"
       aria-expanded="false" aria-label="Toggle navigation">
@@ -71,25 +27,15 @@
     </button>
   </nav>
 
-  <main role="main" class="container">
-    <h1></h1>
-
-  </main>
-
   <main role="main">
 
-    <section class="jumbotron text-center">
+    <section class="jumbotron">
       <div class="container">
         <h1 class="jumbotron-heading">Add new post</h1>
-        <textarea id="source" class="form-control mb-3"></textarea>
-    
-        <button id="store" class="btn btn-primary mb-3" onclick="store();">Add</button>
+        <textarea id="newpost" class="text-left"></textarea>
 
-        <div class="input-group mb-3">
-          <input type="text" class="form-control" id="searchaddress" placeholder="xrb_1234..." value="xrb_1zc5jynj7rjyd9cakrfdr74jfy47oirts7ikr6538rwmb37ipmxkphu4c116">
-          <div class="input-group-append">
-            <button class="btn btn-primary" onclick="search();">Search for Posts</button>
-          </div>
+        <div class="text-center">
+          <button id="store" class="btn btn-primary" onclick="store();">Add</button>
         </div>
 
       </div>
@@ -97,6 +43,14 @@
 
     <div class="album py-5 bg-light">
       <div class="container">
+
+        <h1 class="jumbotron-heading">Search for posts</h1>
+        <div class="input-group mb-3">
+          <input type="text" class="form-control" id="searchaddress" placeholder="xrb_1234..." value="xrb_3dnp3kfdp3f9wm1qip4mmphbxbci4ngothdrg5d54794t9e669phzuj8dpqm">
+          <div class="input-group-append">
+            <button class="btn btn-primary" onclick="search();">Search</button>
+          </div>
+        </div>
 
         <div class="row" id="posts">
         </div>
@@ -109,12 +63,13 @@
     crossorigin="anonymous"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
     crossorigin="anonymous"></script>
-  <script src="https://unpkg.com/ipfs/dist/index.min.js"></script>
+  <script src="https://unpkg.com/ipfs-api/dist/index.js"></script>
 
-  <script src="blake2b.js"></script>
-  <script src="bs58.bundle.js"></script>
-  <script src="functions.js"></script>
-  <script src="index.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/trumbowyg@2.10.0/dist/trumbowyg.min.js"></script>
+  <script src="static/js/blake2b.js"></script>
+  <script src="static/js/bs58.bundle.js"></script>
+  <script src="static/js/functions.js"></script>
+  <script src="static/js/index.js"></script>
 </body>
 
 </html>

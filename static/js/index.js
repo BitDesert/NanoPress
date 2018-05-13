@@ -1,15 +1,6 @@
-const node = new Ipfs({
-  repo: 'ipfs-' + Math.random()
-})
+var node = window.IpfsApi({ host: 'ipfs.infura.io', port: 5001, protocol: 'https' })
 
-node.once('ready', () => {
-  console.log('Online status: ', node.isOnline() ? 'online' : 'offline')
-  document.getElementById("status").innerHTML = (node.isOnline() ? 'online' : 'offline')
-})
-
-node.on('error', error => {
-  console.error('IPFS ERROR', error.message)
-})
+$('#newpost').trumbowyg();
 
 function search(account) {
   var searchaddress = document.getElementById('searchaddress').value
@@ -18,6 +9,9 @@ function search(account) {
 }
 
 function searchaccount(account) {
+
+  // clear all posts
+  $('#posts').html('');
 
   $.ajax({
       url: "https://nanovault.io/api/node-api",
@@ -81,7 +75,7 @@ function getIpfsFile(hash) {
 }
 
 function store () {
-  var toStore = document.getElementById('source').value
+  var toStore = document.getElementById('newpost').value
 
   node.files.add(node.types.Buffer.from(toStore), (err, res) => {
     if (err || !res) {
@@ -91,6 +85,8 @@ function store () {
     res.forEach((file) => {
       if (file && file.hash) {
         console.log('successfully stored', file.hash)
+
+        pingIpfsHash(file.hash);
 
         var hashbytes = getBytes32FromIpfsHash(file.hash);
         console.log('bytes', hashbytes)
@@ -102,4 +98,20 @@ function store () {
       }
     })
   })
+}
+
+function pingIpfsHash(hash){
+  
+  // gets the file from the central gateway
+  // otherwise it's only stored locally
+
+  $.ajax({
+    url: "https://ipfs.io/ipfs/"+hash,
+    type: 'GET'
+  })
+  .done(function (data) {
+
+    console.log('Successfully pinged ipfs.io')
+
+  });
 }
